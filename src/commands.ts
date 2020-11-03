@@ -110,23 +110,31 @@ function createDirectives(): Array<string> {
   const commentStyle = config.get<string>("Comment Style", "Block");
   const pathDepth = config.get<number>("Path Depth", 0);
 
-  let macroName: string;
-  if (macroType === "Filename") {
-    macroName = fromFileName(
+  let macroName: string = "";
+  const regexp_filename = new RegExp('.*Filename.*');
+  const regexp_filepath = new RegExp('.*Filepath.*');
+  const regexp_guid = new RegExp('.*GUID.*');
+  if (regexp_filename.test(macroType)) {
+    macroName += fromFileName(
       false,
       pathDepth,
       shortenUnderscores,
       removeExtension
     );
-  } else if (macroType === "Filepath") {
-    macroName = fromFileName(
+  }
+  else if (regexp_filepath.test(macroType)) {
+    macroName += fromFileName(
       true,
       pathDepth,
       shortenUnderscores,
       removeExtension
     );
-  } else {
-    macroName = fromGUID(preventDecimal);
+  }
+  if (regexp_guid.test(macroType)) {
+    if (macroName != "") {
+      macroName += "_";
+    }
+    macroName += fromGUID(preventDecimal);
   }
 
   macroName = macroPrefix + macroName + macroSuffix;

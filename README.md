@@ -20,7 +20,7 @@ Update existing include guard
 
 ## Features
 
-* Generates include guard macros from GUID (or UUID v4), file name or file path. All non-alphanumeric characters are replaced with underscores.
+* Generates include guard macros from GUID (or UUID v4), file name, file path or combinations of file name + GUID or file path + GUID. All non-alphanumeric characters are replaced with underscores.
 
 ```C
 // GUID
@@ -29,6 +29,10 @@ Update existing include guard
 #define UTILS_H
 // File path form the prject root
 #define FOO_BAR_UTILS_H
+// File name +  GUID
+#define UTILS_H_E8A33412_A210_4F05_99A4_F6E2019B7137
+// File path form the prject root + GUID
+#define FOO_BAR_UTILS_H_E8A33412_A210_4F05_99A4_F6E2019B7137
 ```
 
 * Selectable comment style on ```#endif```. Block, line or none.

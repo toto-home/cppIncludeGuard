@@ -40,15 +40,19 @@
 					"enum": [
 						"GUID",
 						"Filename",
-						"Filepath"
+						"Filepath",
+						"Filename+GUID",
+						"Filepath+GUID"
 					],
 					"enumDescriptions": [
 						"Random GUID v4. Separated by underscores.",
 						"File name of the current document. All non-alphanumeric characters are replaced with underscores.",
-						"File path of the current document. All non-alphanumeric characters are replaced with underscores. Works like Filename outside workspaces."
+						"File path of the current document. All non-alphanumeric characters are replaced with underscores. Works like Filename outside workspaces.",
+						"Combination of Filename and GUID",
+						"Combination of Filepath and GUID"
 					],
 					"default": "GUID",
-					"description": "Source of include guard macros. GUID, Filename or File Path."
+					"description": "Source of include guard macros. GUID, Filename, Filepath, Filename+GUID, or Filepath+GUID"
 				},
 				"C/C++ Include Guard.Path Depth": {
 					"type": "number",
